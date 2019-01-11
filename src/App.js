@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Header from './components/header/Header.js';
-import Route from './router.js';
+import Route from './routes.js';
 
 class App extends Component {
   render() {

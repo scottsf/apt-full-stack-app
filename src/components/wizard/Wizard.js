@@ -1,46 +1,38 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import {Route, Link} from 'react-router-dom';
 import axios from 'axios';
+import Step1 from './Step1.js';
+import Step2 from './Step2.js';
+import Step3 from './Step3.js';
 
 class Wizard extends Component {
-  state = {
-    name: '',
-    address: '',
-    city: '',
-    state: '',
-    zipcode: ''
-  }
-
-  handleInput = (e) => {
+  handleInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   createHouse = () => {
-    axios.post(`/api/house`, this.state)
-  }
+    axios.post(`/api/house`, this.state);
+  };
 
   render() {
-    console.log(this.state)
     return (
       <div>
         Wizard
-        <Link to='/'>
+        <Link to="/">
           <button> Cancel </button>
         </Link>
-
-        <input name='name' value={this.state.name} placeholder='name' onChange={(e) => this.handleInput(e)} />
-        <input name='address' value={this.state.address} placeholder='addres' onChange={(e) => this.handleInput(e)} />
-        <input name='city' value={this.state.city} placeholder='city' onChange={(e) => this.handleInput(e)} />
-        <input name='state' value={this.state.state} placeholder='state' onChange={(e) => this.handleInput(e)} />
-        <input name='zipcode' value={this.state.zipcode} placeholder='zipcode' onChange={(e) => this.handleInput(e)} />
-
-        <Link to='/'>
+        <div>
+          <Route path="/wizard/step1" component={Step1} />
+          <Route path="/wizard/step2" component={Step2} />
+          <Route path="/wizard/step3" component={Step3} />
+        </div>
+        <Link to="/">
           <button onClick={() => this.createHouse()}> Complete </button>
         </Link>
       </div>
-    )
+    );
   }
 }
 
