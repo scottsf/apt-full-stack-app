@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Step1 extends Component {
   state = {
@@ -54,6 +55,9 @@ class Step1 extends Component {
           placeholder="zipcode"
           onChange={e => this.handleInput(e)}
         />
+        <Link to="/wizard/step2">
+          <button>Next Step</button>
+        </Link>
       </div>
     );
   }

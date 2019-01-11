@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Step2 extends Component {
   handleInput = e => {
@@ -16,6 +17,12 @@ class Step2 extends Component {
           value={this.props.imgUrl}
           onChange={e => this.props.handleInput(e)}
         />
+        <button onClick={() => this.props.history.push('/wizard/step1')}>
+          Previous Step
+        </button>
+        <Link to="/wizard/step3">
+          <button>Next Step</button>
+        </Link>
       </div>
     );
   }
