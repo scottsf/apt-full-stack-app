@@ -6,16 +6,6 @@ import Step2 from './Step2.js';
 import Step3 from './Step3.js';
 
 class Wizard extends Component {
-  handleInput = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  createHouse = () => {
-    axios.post(`/api/house`, this.state);
-  };
-
   render() {
     return (
       <div>
@@ -28,9 +18,6 @@ class Wizard extends Component {
           <Route path="/wizard/step2" component={Step2} />
           <Route path="/wizard/step3" component={Step3} />
         </div>
-        <Link to="/">
-          <button onClick={() => this.createHouse()}> Complete </button>
-        </Link>
       </div>
     );
   }
