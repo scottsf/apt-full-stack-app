@@ -9,9 +9,11 @@ const initialState = {
 const CREATE_HOUSE = 'CREATE_HOUSE';
 
 const reducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case CREATE_HOUSE:
-      return Object.assign({}, state, action);
+      console.log('HEEEY');
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }
@@ -19,6 +21,9 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-// export default const = () => {
-
-// }
+export function createHouse(info) {
+  return {
+    type: CREATE_HOUSE,
+    payload: info,
+  };
+}
