@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {updateAmount} from '../../ducks/reducer';
 
 class Step3 extends Component {
   state = {
@@ -17,19 +19,26 @@ class Step3 extends Component {
     return (
       <div>
         <input
-          name="imgUrl"
+          name="monthlyMA"
           value={this.props.imgUrl}
-          onChange={e => this.props.handleInput(e)}
+          type="number"
+          onChange={e => this.handleInput(e)}
         />
         <input
-          name="imgUrl"
+          name="desiredMR"
+          type="number"
+          onChange={e => this.handleInput(e)}
           value={this.props.imgUrl}
-          onChange={e => this.props.handleInput(e)}
+          onChange={e => this.handleInput(e)}
         />
         <Link to="/">
           <button onClick={() => this.createHouse()}> Complete </button>
         </Link>
-        <button onClick={() => this.props.history.goBack()}>
+        <button
+          onClick={
+            (() => this.props.history.goBack(),
+            () => this.props.updateAmount(this.state))
+          }>
           Previous Step
         </button>
       </div>
@@ -37,4 +46,7 @@ class Step3 extends Component {
   }
 }
 
-export default Step3;
+export default connect(
+  null,
+  {updateAmount},
+)(Step3);

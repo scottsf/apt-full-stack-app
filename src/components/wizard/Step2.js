@@ -23,7 +23,11 @@ class Step2 extends Component {
           value={this.state.imgUrl}
           onChange={e => this.handleInput(e)}
         />
-        <button onClick={() => this.props.history.push('/wizard/step1')}>
+        <button
+          onClick={
+            (() => this.props.history.push('/wizard/step1'),
+            () => this.props.updateImg(this.state.imgUrl))
+          }>
           Previous Step
         </button>
         <Link to="/wizard/step3">

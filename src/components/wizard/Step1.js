@@ -71,11 +71,21 @@ class Step1 extends Component {
   }
 }
 
+let stateToProps = state => {
+  return {
+    name: state.name,
+    address: state.address,
+    city: state.city,
+    state: state.state,
+    zipcode: state.zipcode,
+  };
+};
+
 let actionCreators = {
   createHouse,
 };
 
 export default connect(
-  null,
+  stateToProps,
   actionCreators,
 )(Step1);
