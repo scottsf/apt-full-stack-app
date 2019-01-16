@@ -29,7 +29,6 @@ class Step3 extends Component {
           type="number"
           onChange={e => this.handleInput(e)}
           value={this.props.imgUrl}
-          onChange={e => this.handleInput(e)}
         />
         <Link to="/">
           <button onClick={() => this.createHouse()}> Complete </button>

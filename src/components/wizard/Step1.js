@@ -5,13 +5,33 @@ import axios from 'axios';
 import {createHouse} from '../../ducks/reducer';
 
 class Step1 extends Component {
-  state = {
-    name: '',
-    address: '',
-    city: '',
-    state: '',
-    zipcode: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      address: '',
+      city: '',
+      state: '',
+      zipcode: '',
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      name: this.props.name,
+      address: this.props.address,
+      city: this.props.city,
+      state: this.props.state,
+      zipcode: this.props.zipcode,
+    });
+
+    // console.log(prevProps);
+    // if (prevProps !== this.props) {
+    //   this.setState({
+    //     this.state
+    //   });
+    // }
+  }
 
   handleInput = e => {
     this.setState({
@@ -30,14 +50,12 @@ class Step1 extends Component {
         <input
           name="name"
           value={this.state.name}
-          placeholder="name"
           onChange={e => this.handleInput(e)}
         />
         <p>Address</p>
         <input
           name="address"
           value={this.state.address}
-          placeholder="addres"
           onChange={e => this.handleInput(e)}
         />
         <p>City</p>
