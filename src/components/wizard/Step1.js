@@ -62,24 +62,20 @@ class Step1 extends Component {
           onChange={e => this.handleInput(e)}
         />
         <Link to="/wizard/step2">
-          <button onClick={() => createHouse(this.state)}>Next Step</button>
+          <button onClick={() => this.props.createHouse(this.state)}>
+            Next Step
+          </button>
         </Link>
       </div>
     );
   }
 }
 
-let stateToProps = state => {
-  return {
-    name: state.name,
-    address: state.address,
-    city: state.city,
-    state: state.state,
-    zipcode: state.zipcode,
-  };
+let actionCreators = {
+  createHouse,
 };
 
 export default connect(
-  stateToProps,
-  createHouse,
+  null,
+  actionCreators,
 )(Step1);
