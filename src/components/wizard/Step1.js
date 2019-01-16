@@ -24,13 +24,6 @@ class Step1 extends Component {
       state: this.props.state,
       zipcode: this.props.zipcode,
     });
-
-    // console.log(prevProps);
-    // if (prevProps !== this.props) {
-    //   this.setState({
-    //     this.state
-    //   });
-    // }
   }
 
   handleInput = e => {
