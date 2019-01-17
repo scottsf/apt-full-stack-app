@@ -37,7 +37,5 @@ export function createHouse(info) {
 }
 
 export const updateImg = img => ({type: UPDATE_IMG, payload: img});
-
 export const updateAmount = amount => ({type: UPDATE_AMOUNT, payload: amount});
-
 export const clearState = () => ({type: CLEAR_STATE, payload: initialState});
