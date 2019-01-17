@@ -9,6 +9,13 @@ class Step3 extends Component {
     desiredMR: '',
   };
 
+  componentDidMount() {
+    this.setState({
+      monthlyMA: this.props.monthlyMA,
+      desiredMR: this.props.desiredMR,
+    });
+  }
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -16,11 +23,12 @@ class Step3 extends Component {
   };
 
   render() {
+    console.log(this.props.desiredMR);
     return (
       <div>
         <input
           name="monthlyMA"
-          value={this.props.imgUrl}
+          value={this.state.monthlyMA}
           type="number"
           onChange={e => this.handleInput(e)}
         />
@@ -28,16 +36,16 @@ class Step3 extends Component {
           name="desiredMR"
           type="number"
           onChange={e => this.handleInput(e)}
-          value={this.props.imgUrl}
+          value={this.state.desiredMR}
         />
         <Link to="/">
           <button onClick={() => this.createHouse()}> Complete </button>
         </Link>
         <button
-          onClick={
-            (() => this.props.history.goBack(),
-            () => this.props.updateAmount(this.state))
-          }>
+          onClick={() => {
+            this.props.history.goBack();
+            this.props.updateAmount(this.state);
+          }}>
           Previous Step
         </button>
       </div>
@@ -45,7 +53,12 @@ class Step3 extends Component {
   }
 }
 
+const mapPropsToState = state => ({
+  monthlyMA: state.monthlyMA,
+  desiredMR: state.desiredMR,
+});
+
 export default connect(
-  null,
+  mapPropsToState,
   {updateAmount},
 )(Step3);
