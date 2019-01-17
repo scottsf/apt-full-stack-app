@@ -4,6 +4,8 @@ import axios from 'axios';
 import Step1 from './Step1.js';
 import Step2 from './Step2.js';
 import Step3 from './Step3.js';
+import {connect} from 'react-redux';
+import {clearState} from '../../ducks/reducer';
 
 class Wizard extends Component {
   render() {
@@ -11,7 +13,7 @@ class Wizard extends Component {
       <div>
         Wizard
         <Link to="/">
-          <button> Cancel </button>
+          <button onClick={() => this.props.clearState()}> Cancel </button>
         </Link>
         <div>
           <Route path="/wizard/step1" component={Step1} />
@@ -23,4 +25,7 @@ class Wizard extends Component {
   }
 }
 
-export default Wizard;
+export default connect(
+  null,
+  {clearState},
+)(Wizard);
