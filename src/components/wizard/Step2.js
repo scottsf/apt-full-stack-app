@@ -8,6 +8,10 @@ class Step2 extends Component {
     imgUrl: '',
   };
 
+  componentDidMount() {
+    this.setState({imgUrl: this.props.imgUrl});
+  }
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -15,7 +19,6 @@ class Step2 extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <input
@@ -40,7 +43,11 @@ class Step2 extends Component {
   }
 }
 
+const mapPropsToState = state => {
+  return {imgUrl: state.imgUrl};
+};
+
 export default connect(
-  null,
+  mapPropsToState,
   {updateImg},
 )(Step2);
