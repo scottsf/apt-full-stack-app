@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateAmount} from '../../ducks/reducer';
+import axios from 'axios';
+
 
 class Step3 extends Component {
   state = {
@@ -22,8 +24,13 @@ class Step3 extends Component {
     });
   };
 
+
+   createHouse = () => {
+      axios.post(`/api/house`, this.props);
+
+   };
+
   render() {
-    console.log(this.props.desiredMR);
     return (
       <div>
         <input
@@ -53,10 +60,7 @@ class Step3 extends Component {
   }
 }
 
-const mapPropsToState = state => ({
-  monthlyMA: state.monthlyMA,
-  desiredMR: state.desiredMR,
-});
+const mapPropsToState = state => ({...state});
 
 export default connect(
   mapPropsToState,

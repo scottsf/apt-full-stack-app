@@ -1,0 +1,32 @@
+.houses {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  background: #fafafa;
+  margin-bottom: 2rem;
+
+  p {
+    margin: 0;
+    padding-bottom: 0.7rem;
+  }
+}
+
+.houses_address {
+
+}
+
+.houses_img-container {
+  width: 12rem;
+  margin-top: auto;
+}
+
+.houses_img {
+  width: 100%
+}
+
+.houses_payment {
+
+}
+
+
