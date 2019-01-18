@@ -1,12 +1,23 @@
 import React from 'react';
+import './house.scss';
 
-const House = ({name, address, city, state, id, removeHouse}) => (
-  <div>
-    <p> {name} </p>
-    <p> {address} </p>
-    <p> {city} </p>
-    <p> {state} </p>
-    <button onClick={ _ => removeHouse(id)}> Delete </button>
+const House = ({...props}) => (
+  <div className="houses">
+    <div className="houses_img-container" >
+      <img className=
+  "houses_img" src={props.img} />
+    </div>
+    <div className="houses_address">
+      <p> Property name: {props.name} </p>
+      <p> Address: {props.address} </p>
+      <p> City: {props.city} </p>
+      <p> State: {props.state} </p>
+      <button onClick={ _ => props.removeHouse(props.id)}> Delete </button>
+    </div>
+    <div className="houses_payment">
+      <p> Monthly Mortgage: {props.mortgage}</p>
+      <p> Desired Rent: {props.rent}</p>
+    </div>
   </div>
 )
 

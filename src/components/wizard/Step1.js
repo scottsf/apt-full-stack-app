@@ -38,7 +38,7 @@ class Step1 extends Component {
 
   render() {
     return (
-      <div>
+      <div className="step1">
         <p>Property Name</p>
         <input
           name="name"
