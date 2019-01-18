@@ -1,0 +1,18 @@
+.wizard {
+  background: brown;
+  width: 100%;
+  padding: 2rem;
+}
+
+.wizard_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    margin: 0;
+  }
+}
+
+.wizard_steps {
+  padding: 2rem 5rem;
+}

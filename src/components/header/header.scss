@@ -1,13 +1,13 @@
 .header {
+  position: relative;
   background: #F10C49;
   width: 100%;
   height: 10vh;
-
 }
 
 .header_h2 {
-  height: 100%;
-  padding-left: 20%;
+  position: absolute;
+  padding-left: 21%;
   color: #ffffff;
-  margin-top: auto;
+  margin-top: 2.5vh;
 }
