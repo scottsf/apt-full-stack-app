@@ -8,7 +8,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route />
+        <div className="body">
+          <Route />
+        </div>
       </div>
     );
   }

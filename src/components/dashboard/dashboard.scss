@@ -1,0 +1,30 @@
+.dashboard {
+  height: 50vh;
+  width: 100%;
+  background: green;
+}
+
+.dashboard_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.dashboard_h2 {
+  margin: 1rem;
+}
+
+.dashboard_button {
+  margin: 1rem;
+}
+
+.dashboard_list {
+  background: brown;
+  height: 90vh;
+  padding: 0 1rem 0 1rem;
+}
+
+.dashboard_p {
+  padding-left: 1rem;
+}
