@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {updateAmount} from '../../ducks/reducer';
+import {updateAmount, clearState} from '../../ducks/reducer';
 import axios from 'axios';
 import './step3.scss';
 
@@ -26,8 +26,11 @@ class Step3 extends Component {
 
 
    createHouse = () => {
-      axios.post(`/api/house`, this.props);
-
+      axios.post(`/api/house`, this.props)
+       .then(res => {
+          this.props.clearState();
+          this.props.updateAmount(this.state);
+       })
    };
 
   render() {
@@ -53,7 +56,6 @@ class Step3 extends Component {
           className="step3_btn-prev"
           onClick={() => {
             this.props.history.goBack();
-            this.props.updateAmount(this.state);
           }}>
           Previous Step
         </button>
@@ -71,5 +73,5 @@ const mapPropsToState = state => ({...state});
 
 export default connect(
   mapPropsToState,
-  {updateAmount},
+  {updateAmount, clearState},
 )(Step3);

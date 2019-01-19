@@ -1,9 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './header.scss';
 
 const Header = () => (
   <div className="header">
-    <h2 className="header_h2">Houser</h2>
+    <Link to='/'>
+      <h2 className="header_h2">Houser</h2>
+    </Link>
   </div>
 );
 
