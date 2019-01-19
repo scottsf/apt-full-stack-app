@@ -1,0 +1,27 @@
+.step1_property {
+  width: 10rem;
+}
+
+.step1_address {
+  width: 20rem;
+}
+
+.step1_state {
+  width: 2rem;
+}
+
+.step1_zip {
+  width: 5rem;
+}
+
+.step1_group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step1_complete {
+  position: absolute;
+  bottom: 5rem;
+  right: 20rem;
+}

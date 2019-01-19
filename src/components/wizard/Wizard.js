@@ -14,7 +14,7 @@ class Wizard extends Component {
         <div className="wizard_nav">
           <h2> Add New List </h2>
           <Link to="/">
-            <button onClick={() => this.props.clearState()}> Cancel </button>
+            <button className="wizard_btn-cancel"onClick={() => this.props.clearState()}> Cancel </button>
           </Link>
         </div>
         <div className="wizard_steps">
