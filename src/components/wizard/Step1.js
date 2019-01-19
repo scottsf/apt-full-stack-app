@@ -84,9 +84,9 @@ class Step1 extends Component {
          </div>
         <Link to="/wizard/step2">
           <button
-            className="step1_complete"
+            className="step1_next"
             onClick={() => this.props.createHouse(this.state)}>
-            Complete
+            Next Step
           </button>
         </Link>
       </div>

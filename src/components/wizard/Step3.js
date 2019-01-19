@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateAmount} from '../../ducks/reducer';
 import axios from 'axios';
-
+import './step3.scss';
 
 class Step3 extends Component {
   state = {
@@ -32,31 +32,38 @@ class Step3 extends Component {
 
   render() {
     return (
-      <div>
+      <div className="step3">
+        <p> Monthly Mortgage Amount: </p>
         <input
+          className="step3_amount"
           name="monthlyMA"
           value={this.state.monthlyMA}
           type="number"
           onChange={e => this.handleInput(e)}
         />
+        <p> Desired Monthly Rate </p>
         <input
+          className="step3_rate"
           name="desiredMR"
           type="number"
           onChange={e => this.handleInput(e)}
           value={this.state.desiredMR}
         />
-        <Link to="/">
-          <button onClick={() => this.createHouse()}> Complete </button>
-        </Link>
         <button
+          className="step3_btn-prev"
           onClick={() => {
             this.props.history.goBack();
             this.props.updateAmount(this.state);
           }}>
           Previous Step
         </button>
+        <Link to="/">
+          <button
+            className="step3_btn-complete"
+            onClick={() => this.createHouse()}> Complete </button>
+        </Link>
       </div>
-    );
+   );
   }
 }
 
