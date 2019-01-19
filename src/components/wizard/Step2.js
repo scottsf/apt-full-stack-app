@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateImg} from '../../ducks/reducer';
+import './step2.scss';
 
 class Step2 extends Component {
   state = {
@@ -20,13 +21,16 @@ class Step2 extends Component {
 
   render() {
     return (
-      <div>
+      <div className="step2">
+        <p className="step2_p"> Image URL </p>
         <input
+          className="step2_imgUrl"
           name="imgUrl"
           value={this.state.imgUrl}
           onChange={e => this.handleInput(e)}
         />
         <button
+          className="step2_btn-prev"
           onClick={() => {
             this.props.history.push('/wizard/step1');
             this.props.updateImg(this.state.imgUrl);
@@ -34,7 +38,7 @@ class Step2 extends Component {
           Previous Step
         </button>
         <Link to="/wizard/step3">
-          <button onClick={() => this.props.updateImg(this.state.imgUrl)}>
+          <button className="step2_btn-next"onClick={() => this.props.updateImg(this.state.imgUrl)}>
             Next Step
           </button>
         </Link>
@@ -43,11 +47,9 @@ class Step2 extends Component {
   }
 }
 
-const mapPropsToState = state => {
-  return {imgUrl: state.imgUrl};
-};
+const mapPropsToState = state => ({imgUrl: state.imgUrl});
 
 export default connect(
-  mapPropsToState,
+  null,
   {updateImg},
 )(Step2);

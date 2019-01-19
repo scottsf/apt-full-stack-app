@@ -7,7 +7,6 @@ module.exports = {
   },
 
   create: (req, res) => {
-    console.log(req.body);
     const {
       name,
       address,
@@ -18,6 +17,7 @@ module.exports = {
       monthlyMA,
       desiredMR,
     } = req.body;
+
     const db = req.app.get('db');
     db.createHouse([
       name,
