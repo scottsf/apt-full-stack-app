@@ -24,12 +24,13 @@ class Step3 extends Component {
     });
   };
 
-
    createHouse = () => {
-      axios.post(`/api/house`, this.props)
+      let {name, address, city, state, zipcode, imgUrl} = this.props;
+     let house = {name, address, city, state, zipcode, imgUrl, ...this.state};
+      axios.post(`/api/house`, house)
        .then(res => {
           this.props.clearState();
-          this.props.updateAmount(this.state);
+          this.props.history.push('/');
        })
    };
 
@@ -55,15 +56,14 @@ class Step3 extends Component {
         <button
           className="step3_btn-prev"
           onClick={() => {
+            this.props.updateAmount(this.state)
             this.props.history.goBack();
           }}>
           Previous Step
         </button>
-        <Link to="/">
-          <button
-            className="step3_btn-complete"
-            onClick={() => this.createHouse()}> Complete </button>
-        </Link>
+        <button
+          className="step3_btn-complete"
+          onClick={() => this.createHouse()}> Complete </button>
       </div>
    );
   }
