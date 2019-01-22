@@ -12,7 +12,7 @@ const House = ({...props}) => (
       <p> Address: {props.address} </p>
       <p> City: {props.city} </p>
       <p> State: {props.state} </p>
-      <button onClick={ _ => props.removeHouse(props.id)}> Delete </button>
+      <button className="houses_btn-delete"onClick={ _ => props.removeHouse(props.id)}> X </button>
     </div>
     <div className="houses_payment">
       <p> Monthly Mortgage: {props.mortgage}</p>
