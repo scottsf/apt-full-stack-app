@@ -1,6 +1,7 @@
 module.exports = {
   read: (req, res) => {
     const db = req.app.get('db');
+    console.log(req.session);
     db.getHouses().then(instance => {
       res.status(200).send(instance);
     });
