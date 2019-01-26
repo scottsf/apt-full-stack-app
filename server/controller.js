@@ -47,7 +47,7 @@ module.exports = {
     let {username} = req.body;
     if (!req.session.username) {
       req.session.username = username;
-      res.status(200).send(req.session);
+      res.status(200).send(req.session.username);
     }
   },
 
