@@ -42,4 +42,25 @@ module.exports = {
       res.status(200).send(instance);
     });
   },
+
+  login: (req, res, next) => {
+    let {username} = req.body;
+    if (!req.session.username) {
+      req.session.username = username;
+      res.status(200).send(req.session);
+    }
+  },
+
+  logout: (req, res, next) => {
+    res.session.destroy();
+    res.sendStatus(200);
+  },
+
+  me: (req, res) => {
+    if (req.session.username) {
+      res.status(200).send(req.session.username);
+    } else {
+      res.sendStatus(403);
+    }
+  },
 };
