@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {history} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {updateUser} from '../../ducks/reducer.js';
 
 class Login extends Component {
   state = {
@@ -10,8 +12,11 @@ class Login extends Component {
 
   componentDidMount() {
     axios.get('/api/me').then(res => {
-      if (res.data === this.state.username) {
+      if (res.data === this.props.user) {
+        this.props.history.push('/')
         console.log('USER IS LOGGED IN');
+      } else {
+        console.log('not yet');
       }
     });
   }
@@ -20,6 +25,7 @@ class Login extends Component {
     axios.post('/api/login', this.state).then(res => {
       if (res.data) {
         this.props.history.push('/');
+        this.props.updateUser(this.state.username);
       }
     });
   };
@@ -39,4 +45,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, {updateUser})(Login);

@@ -1,7 +1,6 @@
 module.exports = {
   read: (req, res) => {
     const db = req.app.get('db');
-    console.log(req.session);
     db.getHouses().then(instance => {
       res.status(200).send(instance);
     });
@@ -45,10 +44,13 @@ module.exports = {
 
   login: (req, res, next) => {
     let {username} = req.body;
+    console.log(username)
     if (!req.session.username) {
       req.session.username = username;
-      res.status(200).send(req.session.username);
+      res.status(200).send(username);
     }
+
+    console.log(req.session);
   },
 
   logout: (req, res, next) => {
@@ -57,6 +59,7 @@ module.exports = {
   },
 
   me: (req, res) => {
+    console.log('REQ_SES: ', req.session);
     if (req.session.username) {
       res.status(200).send(req.session.username);
     } else {

@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 const ctr = require('./controller.js');
-const checkForSession = require('./middlewares/checkForSession.js');
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,13 +11,10 @@ app.use(
   session({
     secret: 'thisissecret',
     resave: false,
-    saveUninitialized: true,
-    cookie: {secure: true},
-    maxAge: 60,
+    saveUninitialized: false,
+    cookie: {maxAge: 600000000},
   }),
 );
-
-app.use(checkForSession);
 
 massive(process.env.DB_URI).then(instance => {
   app.set('db', instance);
