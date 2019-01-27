@@ -3,26 +3,40 @@ import {Link} from 'react-router-dom';
 import './header.scss';
 import {connect} from 'react-redux';
 import {updateUser} from '../../ducks/reducer.js'
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
 
 class Header extends React.Component {
 
   logOut = () => {
-    this.props.updateUser({user: ''});
+    axios.get('/api/logout')
+    this.props.updateUser('')
+    this.props.history.push('/api/logout')
+  }
+
+  logIn = () => {
+    this.props.history.push('/api/login')
+  }
+
+  checkMe = () => {
+    axios.get('/api/me');
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="header">
         <Link to='/' className="header_link">
           <h2 className="header_h2">Houser</h2>
         </Link>
-          {
-            !!this.props.user
-            ?
-            <h4 className="header_h4" onClick={() => this.logOut()}> <a href="/api/login">Logout</a> </h4>
-            :
-            <h4 className="header_h4"> <a href="/api/login">Login</a> </h4>
-          }
+        <button onClick={() => this.checkMe()}>CHECK ME </button>
+        {
+          !!this.props.user
+          ?
+            <h4 className="header_h4" onClick={() => this.logOut()}> Logout </h4>
+          :
+            <h4 className="header_h4" onClick={() => this.logIn()}> Login </h4>
+        }
       </div>
     )
   }
@@ -33,4 +47,4 @@ const mapStateToProps = (state) => (
 )
 
 
-export default connect(mapStateToProps, {updateUser})(Header);
+export default withRouter(connect(mapStateToProps, {updateUser})(Header));

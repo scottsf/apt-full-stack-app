@@ -11,17 +11,17 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    axios.get('/api/me').then(res => {
-      if (res.data === this.props.user) {
-        this.props.history.push('/')
-        console.log('USER IS LOGGED IN');
-      } else {
-        console.log('not yet');
-      }
-    });
+    // axios.get('/api/me').then(res => {
+    //   if (res.data === this.props.user) {
+    //     this.props.history.push('/')
+    //     console.log('USER IS LOGGED IN');
+    //   } else {
+    //     console.log('not yet');
+    //   }
+    // });
   }
 
-  checkUser = () => {
+  loginUser = () => {
     axios.post('/api/login', this.state).then(res => {
       if (res.data) {
         this.props.history.push('/');
@@ -39,7 +39,7 @@ class Login extends Component {
           value={this.state.username}
           onChange={e => this.setState({username: e.target.value})}
         />
-        <button onClick={() => this.checkUser()}> Login </button>
+        <button onClick={() => this.loginUser()}> Login </button>
       </div>
     );
   }

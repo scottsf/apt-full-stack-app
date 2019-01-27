@@ -44,18 +44,21 @@ module.exports = {
 
   login: (req, res, next) => {
     let {username} = req.body;
-    console.log(username)
     if (!req.session.username) {
       req.session.username = username;
       res.status(200).send(username);
     }
 
-    console.log(req.session);
+    console.log("LOGIN: ", req.session)
   },
 
   logout: (req, res, next) => {
-    res.session.destroy();
+    // res.session.destroy(function(err) {
+    //   console.log(err)
+    // });
+    req.session.destroy();
     res.sendStatus(200);
+    console.log("LOGOUT: ", req.session)
   },
 
   me: (req, res) => {
