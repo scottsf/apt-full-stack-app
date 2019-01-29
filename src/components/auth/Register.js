@@ -4,25 +4,14 @@ import {history} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateUser} from '../../ducks/reducer.js';
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: '',
     password: '',
   };
 
-  componentDidMount() {
-    // axios.get('/api/me').then(res => {
-    //   if (res.data === this.props.user) {
-    //     this.props.history.push('/')
-    //     console.log('USER IS LOGGED IN');
-    //   } else {
-    //     console.log('not yet');
-    //   }
-    // });
-  }
-
-  loginUser = () => {
-    axios.post('/api/login', this.state).then(res => {
+  registeruser = () => {
+    axios.post('/api/register', this.state).then(res => {
       if (res.data) {
         this.props.history.push('/');
         this.props.updateUser(this.state.username);
@@ -44,7 +33,7 @@ class Login extends Component {
           value={this.state.password}
           onChange={e => this.setState({password: e.target.value})}
         />
-        <button onClick={() => this.loginUser()}> Login </button>
+        <button onClick={() => this.registerUser()}> Login </button>
       </div>
     );
   }
@@ -54,4 +43,4 @@ const mapStateToProps = (state) => ({
   user: state.user
 })
 
-export default connect(mapStateToProps, {updateUser})(Login);
+export default connect(mapStateToProps, {updateUser})(Register);

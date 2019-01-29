@@ -22,6 +22,10 @@ class Header extends React.Component {
     axios.get('/api/me');
   }
 
+  register = () => {
+    this.props.history.push('/api/register')
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -37,7 +41,7 @@ class Header extends React.Component {
           :
           <div className="header_register">
             <h4 className="header_h4" onClick={() => this.logIn()}> Login </h4>
-            <h4 className="header_h4" onClick={() => this.logIn()}> Register </h4>
+            <h4 className="header_h4" onClick={() => this.register()}> Register </h4>
 
           </div>
         }
