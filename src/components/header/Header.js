@@ -11,7 +11,7 @@ class Header extends React.Component {
   logOut = () => {
     axios.get('/api/logout')
     this.props.updateUser('')
-    this.props.history.push('/api/logout')
+    this.props.history.push('/')
   }
 
   logIn = () => {
@@ -35,7 +35,11 @@ class Header extends React.Component {
           ?
             <h4 className="header_h4" onClick={() => this.logOut()}> Logout </h4>
           :
+          <div className="header_register">
             <h4 className="header_h4" onClick={() => this.logIn()}> Login </h4>
+            <h4 className="header_h4" onClick={() => this.logIn()}> Register </h4>
+
+          </div>
         }
       </div>
     )
