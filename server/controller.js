@@ -43,7 +43,7 @@ module.exports = {
   },
 
   login: (req, res, next) => {
-    let {username} = req.body;
+    let {username, password} = req.body;
     if (!req.session.username) {
       req.session.username = username;
       res.status(200).send(username);
