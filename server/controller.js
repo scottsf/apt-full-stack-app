@@ -49,7 +49,7 @@ module.exports = {
       res.status(200).send(username);
     }
 
-    console.log("LOGIN: ", req.session)
+    console.log('LOGIN: ', req.session);
   },
 
   logout: (req, res, next) => {
@@ -58,7 +58,7 @@ module.exports = {
     // });
     req.session.destroy();
     res.sendStatus(200);
-    console.log("LOGOUT: ", req.session)
+    console.log('LOGOUT: ', req.session);
   },
 
   me: (req, res) => {
@@ -68,5 +68,13 @@ module.exports = {
     } else {
       res.sendStatus(403);
     }
+  },
+
+  register: (req, res) => {
+    const {username, password} = req.body;
+    const db = req.app.get('db');
+    db.registerUser([username, password]).then(instance => {
+      res.sendStatus(200);
+    });
   },
 };

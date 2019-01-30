@@ -26,6 +26,7 @@ app.delete(`/api/house/:id`, ctr.remove);
 app.post('/api/login', ctr.login);
 app.get('/api/logout', ctr.logout);
 app.get('/api/me', ctr.me);
+app.post('/api/register', ctr.register);
 
 const PORT = 3001;
 app.listen(PORT, () => console.log(`Port is running on ${PORT}`));
