@@ -74,7 +74,7 @@ module.exports = {
     const {username, password} = req.body;
     const db = req.app.get('db');
     db.registerUser([username, password]).then(instance => {
-      res.sendStatus(200);
+      res.status(200).send(instance);
     });
   },
 };
