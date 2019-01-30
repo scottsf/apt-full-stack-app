@@ -43,13 +43,23 @@ module.exports = {
   },
 
   login: (req, res, next) => {
-    let {username, password} = req.body;
-    if (!req.session.username) {
-      req.session.username = username;
-      res.status(200).send(username);
-    }
+    const {username, password} = req.body;
+    const db = req.app.get('db');
+    db.getUserInfo([username, password]).then(instance => {
+      if (instance) {
+        console.log(instance);
+        res.status(200).send(instance);
+      } else {
+        res.sendStatus(403);
+      }
+    });
 
-    console.log('LOGIN: ', req.session);
+    // if (!req.session.username) {
+    //   req.session.username = username;
+    //   res.status(200).send(username);
+    // }
+
+    // console.log('LOGIN: ', req.session);
   },
 
   logout: (req, res, next) => {
