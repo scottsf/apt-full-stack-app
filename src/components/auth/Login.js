@@ -25,7 +25,6 @@ class Login extends Component {
     console.log('Login')
     axios.post('/api/login', this.state).then(res => {
       if (res.data) {
-        console.log(res.data)
         this.props.history.push('/');
         this.props.updateUser(res.data.id);
       }

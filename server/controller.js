@@ -47,19 +47,17 @@ module.exports = {
     const db = req.app.get('db');
     db.getUserInfo([username, password]).then(instance => {
       if (instance.length !== 0) {
-        console.log('Instance, ', instance);
-        res.status(200).send(instance);
+        let {id} = instance[0];
+        if (!req.session.userId) {
+          req.session.userId = id;
+          res.status(200).send(instance[0]);
+        }
       } else {
         res.sendStatus(403);
       }
     });
 
-    // if (!req.session.username) {
-    //   req.session.username = username;
-    //   res.status(200).send(username);
-    // }
-
-    // console.log('LOGIN: ', req.session);
+    console.log('LOGIN: ', req.session);
   },
 
   logout: (req, res, next) => {
