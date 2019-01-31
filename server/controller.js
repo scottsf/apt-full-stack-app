@@ -46,8 +46,8 @@ module.exports = {
     const {username, password} = req.body;
     const db = req.app.get('db');
     db.getUserInfo([username, password]).then(instance => {
-      if (instance) {
-        console.log(instance);
+      if (instance.length !== 0) {
+        console.log('Instance, ', instance);
         res.status(200).send(instance);
       } else {
         res.sendStatus(403);

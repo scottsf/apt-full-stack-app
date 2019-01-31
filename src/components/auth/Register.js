@@ -10,7 +10,8 @@ class Register extends Component {
     password: '',
   };
 
-  registeruser = () => {
+  registerUser= () => {
+    console.log('hi')
     axios.post('/api/register', this.state).then(res => {
       if (res.data) {
         this.props.history.push('/');
