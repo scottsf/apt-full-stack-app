@@ -81,8 +81,16 @@ module.exports = {
   register: (req, res) => {
     const {username, password} = req.body;
     const db = req.app.get('db');
-    db.registerUser([username, password]).then(instance => {
-      res.status(200).send(instance);
+    db.getUserInfo([username, password]).then(instance => {
+      if (instance.length === 0) {
+        db.registerUser([username, password]).then(instance => {
+          console.log(instance);
+          res.status(200).send(instance[0]);
+          // save user id in session
+        });
+      } else {
+        res.status(403).send('USER EXISTS');
+      }
     });
   },
 };
