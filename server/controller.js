@@ -87,7 +87,11 @@ module.exports = {
           db.getUserInfo([username, password]).then(instance => {
             console.log(instance);
             res.status(200).send(instance[0]);
-            // save user id in session
+            let {id} = instance[0];
+            if (!req.session.userId) {
+              req.session.userId = id;
+              res.status(200).send(instance[0]);
+            }
           });
         });
       } else {
