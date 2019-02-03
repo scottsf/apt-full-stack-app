@@ -14,7 +14,7 @@ class Register extends Component {
     axios.post('/api/register', this.state).then(res => {
       if (res.data) {
         this.props.history.push('/');
-        this.props.updateUser(this.state.username);
+        this.props.updateUser(res.data.id);
       }
     });
   };

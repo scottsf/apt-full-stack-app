@@ -85,9 +85,9 @@ module.exports = {
       if (instance.length === 0) {
         db.registerUser([username, password]).then(instance => {
           db.getUserInfo([username, password]).then(instance => {
-            console.log(instance);
-            res.status(200).send(instance[0]);
             let {id} = instance[0];
+            console.log(id);
+            res.status(200).send(instance[0]);
             if (!req.session.userId) {
               req.session.userId = id;
               res.status(200).send(instance[0]);

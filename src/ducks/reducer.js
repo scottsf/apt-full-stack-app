@@ -27,6 +27,7 @@ export const reducer = (state = initialState, action) => {
     case CLEAR_STATE:
       return action.payload;
     case UPDATE_USER:
+      console.log(action.payload)
       return {...state, user: action.payload};
     default:
       return state;
@@ -43,4 +44,4 @@ export function createHouse(info) {
 export const updateImg = img => ({type: UPDATE_IMG, payload: img});
 export const updateAmount = amount => ({type: UPDATE_AMOUNT, payload: amount});
 export const clearState = () => ({type: CLEAR_STATE, payload: initialState});
-export const updateUser = (user) => ({type: UPDATE_USER, payload: user})
+export const  updateUser = (user) => ({type: UPDATE_USER, payload: user})
