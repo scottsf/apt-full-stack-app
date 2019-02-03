@@ -84,9 +84,11 @@ module.exports = {
     db.getUserInfo([username, password]).then(instance => {
       if (instance.length === 0) {
         db.registerUser([username, password]).then(instance => {
-          console.log(instance);
-          res.status(200).send(instance[0]);
-          // save user id in session
+          db.getUserInfo([username, password]).then(instance => {
+            console.log(instance);
+            res.status(200).send(instance[0]);
+            // save user id in session
+          });
         });
       } else {
         res.status(403).send('USER EXISTS');
